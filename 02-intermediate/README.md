@@ -5,6 +5,7 @@
 Planned topics:
 
 - Chart dependencies & subcharts (`charts/`, `Chart.yaml` `dependencies:`, `helm dependency update`)
+- Forcing pod rollouts on ConfigMap/Secret changes (checksum annotations on the pod template)
 - Named templates & `_helpers.tpl` in depth
 - Helm hooks (pre-install, post-upgrade, etc.)
 - `helm lint` and `helm test` for chart validation

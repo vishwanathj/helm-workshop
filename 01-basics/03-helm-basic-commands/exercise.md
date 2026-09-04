@@ -38,6 +38,12 @@
    ```
    Note: `helm get values` by default shows only the values *you* overrode — which is none, so it's empty. That's expected.
 
+   Now compare that to `helm get manifest`, which shows the *actual* Kubernetes YAML Helm applied to your cluster for this release (fully rendered, no more template placeholders):
+   ```bash
+   helm get manifest my-nginx --namespace helm-basics | less
+   ```
+   This is your go-to command when you need to see exactly what's running, not just what you configured.
+
 7. Clean up — uninstall the release:
    ```bash
    helm uninstall my-nginx --namespace helm-basics

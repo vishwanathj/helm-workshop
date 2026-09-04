@@ -14,6 +14,7 @@ Before building your own chart, install someone else's — this is what most Hel
 | `helm list` (or `helm ls`) | Lists releases in the current namespace |
 | `helm status <release-name>` | Shows details/status of a release |
 | `helm get values <release-name>` | Shows the values a release was installed with |
+| `helm get manifest <release-name>` | Shows the exact, fully-rendered Kubernetes YAML currently applied for a release — the best way to see "what did Helm actually create in my cluster?" |
 | `helm uninstall <release-name>` | Removes a release and its resources |
 
 A **release name** is yours to choose — it's just a label for this particular installation (e.g., `my-nginx`). It's not the chart's name.
