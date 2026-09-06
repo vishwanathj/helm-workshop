@@ -91,4 +91,4 @@ No. Rollback creates a *new* revision whose content matches the target revision 
 
 ---
 
-**Basics module complete.** Intermediate topics (dependencies/subcharts, hooks, packaging & chart repos, `helm lint`/`helm test` in depth) land in [02-intermediate](../../02-intermediate/) — coming soon.
+**Basics module complete.** Continue to [Module 2 · Intermediate](../../02-intermediate/) — named templates, conditionals/loops, forcing rollouts on config change, dependencies/subcharts, hooks, `helm lint`/`helm test`, and packaging & chart repos.

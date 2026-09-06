@@ -1,0 +1,5 @@
+apiVersion: v2
+name: webapp
+description: A minimal web app chart for the Helm workshop
+version: 0.1.0
+appVersion: "1.25"
