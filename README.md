@@ -9,7 +9,7 @@ No prior Helm experience assumed. Basic familiarity with `kubectl` and the idea 
 | Module | Status | Covers |
 |---|---|---|
 | [01 · Basics](01-basics/) | ✅ Available | What Helm is, installing it, core commands, chart anatomy, building your first chart, templating, upgrade/rollback |
-| [02 · Intermediate](02-intermediate/) | 🚧 Coming soon | Dependencies/subcharts, hooks, packaging & repos, `helm lint`/`helm test` |
+| [02 · Intermediate](02-intermediate/) | ✅ Available | Named templates, conditionals/loops, checksum rollouts, dependencies/subcharts, hooks, `helm lint`/`helm test`, packaging & repos |
 | [03 · Advanced](03-advanced/) | 🚧 Coming soon | GitOps, CI/CD, OCI registries, provenance/signing, Helmfile |
 
 Start with **[01 · Basics](01-basics/)**.

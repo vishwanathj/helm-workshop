@@ -1,0 +1,5 @@
+apiVersion: v2
+name: greeter
+description: A tiny standalone chart used to demonstrate Helm chart dependencies
+version: 0.1.0
+appVersion: "1.0.0"

@@ -1,0 +1,25 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: {{ include "webapp.fullname" . }}-post-install-greeting
+  labels:
+    {{- include "webapp.labels" . | nindent 4 }}
+  annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-weight: "5"
+    helm.sh/hook-delete-policy: hook-succeeded
+spec:
+  backoffLimit: 0
+  template:
+    metadata:
+      labels:
+        app: webapp
+    spec:
+      restartPolicy: Never
+      containers:
+        - name: post-install-greeting
+          image: busybox:1.36
+          command:
+            - sh
+            - -c
+            - "echo '{{ .Values.html.message }}'"
