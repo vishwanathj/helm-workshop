@@ -97,7 +97,11 @@ This part is destructive to your current release but instructive — you'll reco
    ```bash
    helm upgrade webapp . --namespace helm-basics -f custom-values.yaml
    ```
-   This fails — Kubernetes rejects the update because `spec.selector` is immutable on an existing `Deployment`. Helm surfaces the Kubernetes API server's rejection as the upgrade error.
+   This fails with an error like:
+   ```
+   UPGRADE FAILED: ... Deployment.apps "webapp" is invalid: spec.selector: Invalid value: ...: field is immutable
+   ```
+   Kubernetes rejects the update because `spec.selector` is immutable on an existing `Deployment`. Helm surfaces the Kubernetes API server's rejection as the upgrade error.
 3. Revert the file back to just `app: webapp` in `matchLabels` and confirm a normal upgrade succeeds again:
    ```bash
    helm upgrade webapp . --namespace helm-basics -f custom-values.yaml

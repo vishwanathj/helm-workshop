@@ -66,7 +66,7 @@ Continue in `/tmp/webapp` with the chart from Lesson 5 (including hooks and the 
    helm upgrade webapp . --namespace helm-basics -f custom-values.yaml
    helm test webapp --namespace helm-basics --logs
    ```
-   This should report `FAILED`, with a connection-refused/timeout error in the logs — the Service simply doesn't listen on `9999`.
+   This should report `FAILED`, with a connection-refused error in the logs — the Service simply doesn't listen on `9999`. Give it a minute or two: `wget`'s own connection timeout means `helm test` can take 60-90 seconds to come back with the failure — it hasn't hung, it's waiting out `wget`'s retry/timeout behavior before giving up.
 10. Revert the port back to `{{ .Values.service.port }}`, re-apply, and re-test to confirm it passes again.
 
 ## Questions
