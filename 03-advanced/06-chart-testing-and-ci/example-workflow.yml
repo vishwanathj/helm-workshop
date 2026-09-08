@@ -1,0 +1,57 @@
+# Example GitHub Actions workflow for linting and testing Helm charts.
+#
+# This file is reference content for Lesson 6 — it is deliberately NOT placed
+# under .github/workflows/ in this repository, so it won't run automatically.
+# To actually use it in your own project, copy it to
+# .github/workflows/chart-testing.yml.
+#
+# This is the standard pattern recommended by the Helm project itself, built
+# from three official actions: helm/chart-testing-action, helm/kind-action,
+# and azure/setup-helm.
+
+name: Lint and Test Charts
+
+on:
+  pull_request:
+    paths:
+      - "charts/**"
+
+jobs:
+  lint-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # ct needs full history to diff against the target branch
+
+      - name: Set up Helm
+        uses: azure/setup-helm@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x" # ct itself is a Go binary, but its changed-chart detection uses yamllint/yamale under the hood
+
+      - name: Set up chart-testing
+        uses: helm/chart-testing-action@v2
+
+      - name: Detect changed charts
+        id: list-changed
+        run: |
+          changed=$(ct list-changed --config ct.yaml)
+          if [[ -n "$changed" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run chart-testing (lint)
+        if: steps.list-changed.outputs.changed == 'true'
+        run: ct lint --config ct.yaml
+
+      - name: Create kind cluster
+        if: steps.list-changed.outputs.changed == 'true'
+        uses: helm/kind-action@v1
+
+      - name: Run chart-testing (install)
+        if: steps.list-changed.outputs.changed == 'true'
+        run: ct install --config ct.yaml

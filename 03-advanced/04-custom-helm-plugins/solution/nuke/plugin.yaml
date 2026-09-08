@@ -1,0 +1,7 @@
+name: "nuke"
+version: "0.1.0"
+usage: "Uninstall a release and delete its namespace in one step"
+description: |
+  A convenience command for workshop-style cleanup: uninstalls a Helm
+  release, then deletes the Kubernetes namespace it lived in.
+command: "$HELM_PLUGIN_DIR/nuke.sh"

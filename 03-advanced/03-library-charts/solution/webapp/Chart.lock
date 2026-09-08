@@ -1,0 +1,6 @@
+dependencies:
+- name: webapp-common
+  repository: file://../webapp-common
+  version: 0.1.0
+digest: sha256:35ae214de936c600d5e12a0ce91e0f5475729b130266612c514b02a07078b7cc
+generated: "2026-09-07T20:53:16.72729-05:00"

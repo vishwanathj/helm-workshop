@@ -1,0 +1,14 @@
+releases:
+  - name: webapp
+    namespace: helm-advanced
+    chart: ./webapp
+    values:
+      - replicaCount: 3
+        html:
+          message: "Hello from Helmfile-managed webapp!"
+
+  - name: greeter
+    namespace: helm-advanced
+    chart: ./greeter
+    values:
+      - message: "Hello from Helmfile-managed greeter!"

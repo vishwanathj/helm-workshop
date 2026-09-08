@@ -1,0 +1,5 @@
+apiVersion: v2
+name: webapp-common
+description: Shared naming/labeling helpers for the Helm workshop's charts
+type: library
+version: 0.1.0
